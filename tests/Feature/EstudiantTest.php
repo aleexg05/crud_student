@@ -57,6 +57,6 @@ class StudentTest extends TestCase
         $response->assertStatus(200);
         $this->assertDatabaseMissing('students', [
             'id' => $student->id,
-        ]);
+        ]); 
     }
 }
