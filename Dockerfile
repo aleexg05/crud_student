@@ -63,7 +63,7 @@ RUN if [ ! -f .env ]; then cp .env.example .env; fi \
     && php artisan config:cache \
     && php artisan route:cache \
     && php artisan view:cache
-
+ 
 USER www-data
 
 EXPOSE 9000
