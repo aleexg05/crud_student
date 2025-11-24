@@ -53,10 +53,18 @@ RUN chown -R www-data:www-data /var/www/html && \
 
 # Crear y dar permisos a las carpetas de cache
 RUN mkdir -p storage/framework/{cache,views,sessions} \
-&& mkdir -p bootstrap/cache \
+    && mkdir -p bootstrap/cache \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-    USER www-data
+# 👇 Bloque de inicialización Artisan en build time
+RUN if [ ! -f .env ]; then cp .env.example .env; fi \
+    && php artisan key:generate \
+    && php artisan config:cache \
+    && php artisan route:cache \
+    && php artisan view:cache \
+    && php artisan migrate --force
+
+USER www-data 
 
 EXPOSE 9000
