@@ -53,7 +53,7 @@ RUN chown -R www-data:www-data /var/www/html && \
 
 # Crear y dar permisos a las carpetas de cache
 RUN mkdir -p storage/framework/{cache,views,sessions} \
-    && mkdir -p bootstrap/cache \
+&& mkdir -p bootstrap/cache \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
