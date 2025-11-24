@@ -28,7 +28,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 
 # --- STAGE 3: Final Image ---
-FROM php:8.2-fpm-alpine
+FROM php:8.2-fpm-alpine 
 
 RUN set -eux; \
     apk update; \
