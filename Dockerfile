@@ -57,14 +57,14 @@ RUN mkdir -p storage/framework/{cache,views,sessions} \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-# 👇 Bloque de inicialización Artisan en build time
+# 👇 Bloque de inicialización Artisan en build time (sin migraciones)
 RUN if [ ! -f .env ]; then cp .env.example .env; fi \
     && php artisan key:generate \
     && php artisan config:cache \
     && php artisan route:cache \
-    && php artisan view:cache \
-    && php artisan migrate --force
+    && php artisan view:cache
 
-USER www-data 
+USER www-data
 
 EXPOSE 9000
+ 
