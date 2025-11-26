@@ -58,5 +58,5 @@ RUN mkdir -p storage/framework/{cache,views,sessions} \
     && chmod -R 775 storage bootstrap/cache
 
     USER www-data
-
+ 
 EXPOSE 9000 
