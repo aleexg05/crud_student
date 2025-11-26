@@ -59,4 +59,4 @@ RUN mkdir -p storage/framework/{cache,views,sessions} \
 
     USER www-data
 
-EXPOSE 9000
+EXPOSE 9000 
